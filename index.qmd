@@ -1,0 +1,17 @@
+---
+title: "Macroeconometrics Research Report"
+author: "Tomasz Woźniak"
+
+bibliography: references.bib
+---
+
+## Introduction
+
+This is a Quarto document in which we can cite the **bsvars** package by @wozniakBsvarsBayesianEstimation2022. Look for more info at [package CRAN website](https://cran.r-project.org/package=bsvars).
+
+Simply load the package by running
+```{r}
+library(bsvars)
+```
+
+## References {.unnumbered}

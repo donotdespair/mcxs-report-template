@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Macroeconometrics Research Report",
+    "section": "",
+    "text": "This is a Quarto document in which we can cite the bsvars package by Woźniak (2022). Look for more info at package CRAN website.\nSimply load the package by running\n\nlibrary(bsvars)"
+  }
+]
