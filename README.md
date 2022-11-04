@@ -1,6 +1,6 @@
 # mcxs-report-template
 
-This is a template repository for the Research Report for **Macroeconometrics**.
+This is a template repository for the Research Report for **Macroeconometrics**. You can use it to generate a website with your report such as the one at <https://donotdespair.github.io/mcxs-report-template/>
 
 ## Using the template
 
@@ -11,6 +11,14 @@ In order to use this template:
 3.  Give a name to your repository and make it public.
 4.  Clone the repo to your computer using [GitHub Desktop](https://desktop.github.com/).
 5.  Start working on your project. Good luck!
+
+Once you have your own repository created from this template, follow the steps to create your website:
+
+1.  Go to the **GitHub** page of your repository.
+2.  Go to **Setup -\> Pages**.
+3.  Set **Source** to *Deploy from a branch*
+4.  Set the **Branch** to *master*, and then the folder to `/docs`.
+5.  Click **Save**, reload the page and get the link to your website. YAY!
 
 ## The structure of the template repository
 
