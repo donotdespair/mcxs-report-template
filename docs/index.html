@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tomasz Woźniak">
+<meta name="author" content="Your Name">
 
-<title>Macroeconometrics Research Report</title>
+<title>Macroeconometrics Research Report - Title of your work</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,8 @@ div.csl-indent {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#simple-examples" id="toc-simple-examples" class="nav-link" data-scroll-target="#simple-examples">Simple examples</a></li>
+  <li><a href="#a-simple-example" id="toc-a-simple-example" class="nav-link" data-scroll-target="#a-simple-example">A Simple Example</a></li>
+  <li><a href="#some-hints" id="toc-some-hints" class="nav-link" data-scroll-target="#some-hints">Some Hints</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -176,7 +177,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Macroeconometrics Research Report</h1>
+<h1 class="title">Title of your work</h1>
 </div>
 
 
@@ -186,7 +187,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Tomasz Woźniak </p>
+             <p>Your Name </p>
           </div>
   </div>
     
@@ -196,16 +197,100 @@ div.csl-indent {
 
 </header>
 
+<blockquote class="blockquote">
+<p><strong>Abstract.</strong> This is a suggested formatting for your abstract. This <strong>quarto</strong> document is a template for your report. It includes some basic ways of working with such documents. You are invited to learn more about developing online reports with this technology.</p>
+<p><strong>Keywords.</strong> bsvars, impulse responses, quarto, R, tax shocks</p>
+</blockquote>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This is a template repository for the Research Report for <strong>Macroeconometrics</strong>.</p>
-<section id="simple-examples" class="level2">
-<h2 class="anchored" data-anchor-id="simple-examples">Simple examples</h2>
+<p>This is a template repository for the Research Report for <strong>Macroeconometrics</strong>. Learn more about about developing online reports with <strong>quarto</strong> at <a href="https://quarto.org/">quarto.org</a>.</p>
+<section id="a-simple-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-example">A Simple Example</h2>
 <p>This is a Quarto document in which we can cite the <strong>bsvars</strong> package by <span class="citation" data-cites="wozniakBsvarsBayesianEstimation2022">Woźniak (<a href="#ref-wozniakBsvarsBayesianEstimation2022" role="doc-biblioref">2022</a>)</span>. Look for more info at <a href="https://cran.r-project.org/package=bsvars">package CRAN website</a>.</p>
 <p>Simply load the package by running</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bsvars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
+<p>The code below performs simple computations for sampling posterior draws of the impulse responses. The first line uploads the data from the package,another sets the seed for reproducible computations, and then the pipe <code>|&gt;</code> is used to streamline the model specification, estimation including the first burn-in run to obtain convergence and finally, the computed impulse responses are saved in object <code>irf</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(us_fiscal_lsuw)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>us_fiscal_lsuw <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  specify_bsvar<span class="sc">$</span><span class="fu">new</span>(<span class="at">p =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">1000</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">estimate</span>(<span class="at">S =</span> <span class="dv">2000</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compute_impulse_responses</span>(<span class="at">horizon =</span> <span class="dv">20</span>) <span class="ot">-&gt;</span> irf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code above is visible as the <strong>R</strong> chunk contains the setting <code>#| echo: true</code>.</p>
+<p><a href="#tbl-irf">Table&nbsp;1</a> reports the posterior means of the gross domestic product response to an unanticipated tax increase by 1 pp.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-irf" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table 1: Impulse response of gdp to unanticipated tax increase by 1 pp.&nbsp;within two years</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">change in gdp [%]</td>
+<td style="text-align: right;">0.199</td>
+<td style="text-align: right;">0.184</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.159</td>
+<td style="text-align: right;">0.148</td>
+<td style="text-align: right;">0.139</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.123</td>
+<td style="text-align: right;">0.116</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><a href="#fig-irf">Figure&nbsp;1</a> presents the same reaction over the horizon of five years.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-irf" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-irf-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 1: Impulse response of gdp to unanticipated tax increase by 1 pp.&nbsp;within five years</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="some-hints" class="level2">
+<h2 class="anchored" data-anchor-id="some-hints">Some Hints</h2>
+<p>Have a look at how to work with <strong>RStudio</strong> and <strong>GitHub</strong> at: <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">How to use git and GitHub with R</a>.</p>
+<p>These are many different ways of how to work with references in <strong>RStudio</strong>: <a href="https://posit.co/blog/rstudio-1-4-preview-citations/">Preview Citations</a>.</p>
+<p>To make all the <strong>R</strong> code visible on the website change the settings in the preabmble of this document to:</p>
+<pre><code>execute:
+  echo: true</code></pre>
 </section>
 <section id="references" class="level2 unnumbered">
 
