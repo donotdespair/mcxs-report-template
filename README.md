@@ -10,7 +10,8 @@ In order to use this template:
 2.  Search for `mcxs-report-template` and click the **Use this template** button.
 3.  Give a name to your repository and make it public.
 4.  Clone the repo to your computer using [GitHub Desktop](https://desktop.github.com/).
-5.  Start working on your project. Good luck!
+5.  Go to **RStudio** and click **File -\> New Project... -\> Existing Folder** and select the folder to which you cloned the repository. It's much easier if you consistently keep working on your report using this R project.
+6.  Start working on your project. Good luck!
 
 Once you have your own repository created from this template, follow the steps to create your website:
 
